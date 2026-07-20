@@ -1163,3 +1163,91 @@ body.dark-phase-active .collector-submit-btn.deactivated-state {
         padding-bottom: 2rem !important; /* Pulls the content up tighter to reduce vertical drag */
     }
 }
+/* --- COMPACT HAMBURGER DROPDOWN EXTENSION --- */
+.hamburger-menu-btn {
+    display: none; /* Hidden on desktop viewports by default */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-dark);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark-phase-active .hamburger-line {
+    background-color: var(--text-light-zone);
+}
+
+/* Morphing the 3 lines into an active 'X' close symbol */
+.hamburger-menu-btn.is-active .hamburger-line:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+.hamburger-menu-btn.is-active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu-btn.is-active .hamburger-line:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu-btn {
+        display: flex; /* Reveal the 3-line hamburger layout on phones */
+    }
+
+    .nav-links {
+        display: none !important; /* Hide standard spread rows immediately on phone screens */
+        flex-direction: column !important;
+        position: absolute;
+        top: 100%; /* Spawns directly right beneath the fixed navbar */
+        left: 0;
+        width: 100%;
+        background-color: rgba(247, 247, 249, 0.98); /* Light-mode fallback background */
+        backdrop-filter: blur(20px);
+        padding: 2rem 0;
+        gap: 1.8rem !important;
+        border-bottom: 2px solid var(--card-border);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    body.dark-phase-active .nav-links {
+        background-color: rgba(7, 8, 13, 0.98); /* Blends background shade inside night phase trigger tracks */
+        border-bottom-color: rgba(255,255,255,0.05);
+    }
+
+    /* Active Dropdown Trigger Selector State */
+    .nav-links.dropdown-open {
+        display: flex !important; /* Reveals the vertical link grid */
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        font-size: 1.2rem !important;
+        font-weight: 700;
+    }
+
+    .nav-btn {
+        display: inline-block;
+        width: auto !important;
+        margin: 0 auto;
+        padding: 0.8rem 2rem !important;
+    }
+}
+
