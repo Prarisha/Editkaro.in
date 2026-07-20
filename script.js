@@ -56,47 +56,37 @@ document.addEventListener("DOMContentLoaded", () => {
             { title: "CREATOR MERCH LAUNCH AD", desc: "High engagement pacing design templates.", src: "assets/100176-video-720 (1).mp4" }
         ]
     };
-
-    // Day to Night Inversion Scroll Engine Mapping
-        // Upgraded Adaptive Day to Night Inversion and Touch Drag Parallax System
-        // Upgraded Adaptive Day to Night Inversion and Touch Drag Parallax System
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
+// Day to Night Inversion and Desktop Horizontal Translation Parallax System
     window.addEventListener("scroll", () => {
         const scrolled = window.scrollY;
         const darkZoneTop = darkZone.offsetTop;
         const darkZoneHeight = darkZone.offsetHeight;
         const windowHeight = window.innerHeight;
 
-        // Theme inverted phase tracking toggles safely
+        // Day/Night state toggle logic
         if (scrolled + windowHeight / 2 >= darkZoneTop && scrolled <= darkZoneTop + darkZoneHeight) {
             document.body.classList.add("dark-phase-active");
         } else {
             document.body.classList.remove("dark-phase-active");
         }
 
-        // Apply smooth horizontal parallax translation ONLY on desktop screens
+        // Horizontal shifting runs smoothly ONLY on wider viewports
         if (window.innerWidth > 768) {
             const scrollDeltaWithinZone = scrolled - darkZoneTop;
             const shiftX = scrollDeltaWithinZone * -0.4;
             track.style.transform = `translateX(${shiftX}px)`;
         } else {
-            // Hard reset structural matrix translations on mobile so swipe handles can drive it instead
             track.style.transform = "none";
         }
     });
 
-    // 📱 REVOLUTIONARY MOBILE TOUCH FIX PIPELINE
-        // 📱 MOBILE BUTTON CLICK SWIPING PIPELINE
+    // Mobile Track Slide Button Control Pipeline Engine
     const trackViewport = document.querySelector(".stream-track-viewport");
     const prevBtn = document.getElementById("prevSlideBtn");
     const nextBtn = document.getElementById("nextSlideBtn");
 
     if (prevBtn && nextBtn && trackViewport) {
-        // Defines the slide distance matching card scale widths + gaps
-        const slideAmount = 290; 
+        const slideAmount = 290; // Sets shifting calculation width bounds
 
         nextBtn.addEventListener("click", () => {
             trackViewport.scrollBy({ left: slideAmount, behavior: "smooth" });
@@ -106,8 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
             trackViewport.scrollBy({ left: -slideAmount, behavior: "smooth" });
         });
     }
-
-
 
     // Stat Counters Intersections Trigger Module
     const metricObserver = new IntersectionObserver((entries, observer) => {
@@ -173,14 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeLightbox.addEventListener("click", () => { lightbox.style.display = "none"; lightboxVideo.pause(); lightboxVideo.src = ""; });
 
-    // Feature 1 (Home Page Email Collector Form Submission)
-        // Feature 1 (Home Page Email Collector Form Submission) - Upgraded
+    // Upgraded Feature 1 (Home Page Email Collector Form Submission Engine)
+        // Upgraded Feature 1 (Home Page Email Collector Form Submission Engine)
     emailCollectorForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const emailInput = document.getElementById("collectorEmail");
         const submitButton = emailCollectorForm.querySelector(".collector-submit-btn");
         
-        // Disable inputs immediately to prevent multiple accidental click actions
         emailInput.disabled = true;
         submitButton.disabled = true;
         submitButton.innerText = "SAVING...";
@@ -191,19 +178,16 @@ document.addEventListener("DOMContentLoaded", () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ formType: "subscription", email: emailInput.value })
         }).then(() => {
-            // Create and style a smooth success message block below the form element
             const successMsg = document.createElement("p");
             successMsg.className = "collector-success-message";
-            successMsg.innerText = "Thank you for subscribing!";
+            successMsg.innerText = "Thank you for subscribing! We will contact you ASAP.";
             emailCollectorForm.parentNode.appendChild(successMsg);
 
-            // Change button state permanently to show active deactivation
             submitButton.innerText = "SUBSCRIBED";
             submitButton.classList.add("deactivated-state");
             emailInput.classList.add("deactivated-state");
         }).catch(err => {
             console.error("Subscription Error:", err);
-            // Re-enable if network connection drops out entirely
             emailInput.disabled = false;
             submitButton.disabled = false;
             submitButton.innerText = "SUBSCRIBE";
@@ -211,12 +195,45 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-
-    // Feature 2 (Primary 6-Parameter Lead Qualification Form Submission)
+    // Feature 2 (Primary 6-Parameter Lead Qualification Form Submission Execution)
     onboardingForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const submitButton = onboardingForm.querySelector(".submit-form-btn");
         submitButton.disabled = true;
         submitButton.innerText = "TRANSMITTING DATA SPEC...";
-        const selectedBudget = document.querySelector('input[name="budget"]:checked').value;const selectedTimeline = document.querySelector('input[name="timeline"]:checked').value;const formDataPayload = {formType: "contact",name: document.getElementById("contactName").value,email: document.getElementById("contactEmail").value,phone: document.getElementById("contactPhone").value,budget: selectedBudget,timeline: selectedTimeline,message: document.getElementById("contactMessage").value};fetch(webAppUrl, {method: "POST",mode: "no-cors",headers: { "Content-Type": "application/json" },body: JSON.stringify(formDataPayload)}).then(() => {alert("Specs Transmitted! Your dashboard lead file has been logged.");onboardingForm.reset();}).catch(err => {console.error("Network Error:", err);alert("Transmission interrupted. Check connection and retry.");}).finally(() => {submitButton.disabled = false;submitButton.innerText = "SUBMIT REEL SPEC";});});});
 
+        const selectedBudget = document.querySelector('input[name="budget"]:checked').value;
+        const selectedTimeline = document.querySelector('input[name="timeline"]:checked').value;
+
+        const formDataPayload = {
+            formType: "contact",
+            name: document.getElementById("contactName").value,
+            email: document.getElementById("contactEmail").value,
+            phone: document.getElementById("contactPhone").value,
+            budget: selectedBudget,
+            timeline: selectedTimeline,
+            message: document.getElementById("contactMessage").value
+        };
+
+        fetch(webAppUrl, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formDataPayload)
+        })
+        .then(() => {
+            alert("Specs Transmitted! Your dashboard lead file has been logged.");
+            onboardingForm.reset();
+        })
+        .catch(err => {
+            console.error("Network Error:", err);
+            alert("Transmission interrupted. Check connection and retry.");
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.innerText = "SUBMIT REEL SPEC";
+        });
+    });
+});
+
+        
