@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Day to Night Inversion Scroll Engine Mapping
         // Upgraded Adaptive Day to Night Inversion and Touch Drag Parallax System
+        // Upgraded Adaptive Day to Night Inversion and Touch Drag Parallax System
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -87,24 +88,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Mobile Specific Gesture Touch Mechanics for the Image Tape Stream
+    // 📱 REVOLUTIONARY MOBILE TOUCH FIX PIPELINE
     track.addEventListener('touchstart', (e) => {
         isDown = true;
+        // Capture initial touch vector placement parameters securely
         startX = e.touches[0].pageX - track.offsetLeft;
         scrollLeft = track.scrollLeft;
-    });
+    }, { passive: true }); // passive: true optimization lets mobile browsers loop frame scrolls instantly
 
     track.addEventListener('touchend', () => {
         isDown = false;
     });
 
+    track.addEventListener('touchcancel', () => {
+        isDown = false;
+    });
+
     track.addEventListener('touchmove', (e) => {
-        if(!isDown) return;
-        e.preventDefault(); // Prevents vertical jitter drops while running tape swipes
+        if (!isDown) return;
+        
         const x = e.touches[0].pageX - track.offsetLeft;
         const walk = (x - startX) * 1.5; // Controls the swiping sensitivity speed multiplier
+        
+        // Drive native hardware wrapper scroll parameters directly
         track.scrollLeft = scrollLeft - walk;
-    });
+    }, { passive: true });
+
 
 
     // Stat Counters Intersections Trigger Module
