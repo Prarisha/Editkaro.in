@@ -169,14 +169,20 @@ body.dark-phase-active .nav-btn {
     100% { transform: rotate(180deg) scale(0.95) translate(-40px, 40px); } 
 }
 
-.hero-split-layout { 
-    display: grid; 
-    grid-template-columns: 1.2fr 0.8fr; 
+.hero-full-layout { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     width: 100%; 
-    gap: 2rem; 
-    align-items: center; 
     z-index: 5; 
 }
+
+/* Centers the form field layout on desktop viewports too */
+.email-collector-container {
+    margin: 1.5rem auto 0 auto !important;
+}
+
 
 .grid-backdrop { 
     position: absolute; 
