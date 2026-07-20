@@ -89,30 +89,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 📱 REVOLUTIONARY MOBILE TOUCH FIX PIPELINE
-    track.addEventListener('touchstart', (e) => {
-        isDown = true;
-        // Capture initial touch vector placement parameters securely
-        startX = e.touches[0].pageX - track.offsetLeft;
-        scrollLeft = track.scrollLeft;
-    }, { passive: true }); // passive: true optimization lets mobile browsers loop frame scrolls instantly
+        // 📱 MOBILE BUTTON CLICK SWIPING PIPELINE
+    const trackViewport = document.querySelector(".stream-track-viewport");
+    const prevBtn = document.getElementById("prevSlideBtn");
+    const nextBtn = document.getElementById("nextSlideBtn");
 
-    track.addEventListener('touchend', () => {
-        isDown = false;
-    });
+    if (prevBtn && nextBtn && trackViewport) {
+        // Defines the slide distance matching card scale widths + gaps
+        const slideAmount = 290; 
 
-    track.addEventListener('touchcancel', () => {
-        isDown = false;
-    });
+        nextBtn.addEventListener("click", () => {
+            trackViewport.scrollBy({ left: slideAmount, behavior: "smooth" });
+        });
 
-    track.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        
-        const x = e.touches[0].pageX - track.offsetLeft;
-        const walk = (x - startX) * 1.5; // Controls the swiping sensitivity speed multiplier
-        
-        // Drive native hardware wrapper scroll parameters directly
-        track.scrollLeft = scrollLeft - walk;
-    }, { passive: true });
+        prevBtn.addEventListener("click", () => {
+            trackViewport.scrollBy({ left: -slideAmount, behavior: "smooth" });
+        });
+    }
 
 
 
