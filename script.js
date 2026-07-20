@@ -58,25 +58,54 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // Day to Night Inversion Scroll Engine Mapping
+        // Upgraded Adaptive Day to Night Inversion and Touch Drag Parallax System
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
     window.addEventListener("scroll", () => {
         const scrolled = window.scrollY;
         const darkZoneTop = darkZone.offsetTop;
         const darkZoneHeight = darkZone.offsetHeight;
         const windowHeight = window.innerHeight;
 
+        // Theme inverted phase tracking toggles safely
         if (scrolled + windowHeight / 2 >= darkZoneTop && scrolled <= darkZoneTop + darkZoneHeight) {
             document.body.classList.add("dark-phase-active");
         } else {
             document.body.classList.remove("dark-phase-active");
         }
 
-        const scrollDeltaWithinZone = scrolled - darkZoneTop;
-        const shiftX = scrollDeltaWithinZone * -0.4;
-        
+        // Apply smooth horizontal parallax translation ONLY on desktop screens
         if (window.innerWidth > 768) {
+            const scrollDeltaWithinZone = scrolled - darkZoneTop;
+            const shiftX = scrollDeltaWithinZone * -0.4;
             track.style.transform = `translateX(${shiftX}px)`;
+        } else {
+            // Hard reset structural matrix translations on mobile so swipe handles can drive it instead
+            track.style.transform = "none";
         }
     });
+
+    // Mobile Specific Gesture Touch Mechanics for the Image Tape Stream
+    track.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('touchend', () => {
+        isDown = false;
+    });
+
+    track.addEventListener('touchmove', (e) => {
+        if(!isDown) return;
+        e.preventDefault(); // Prevents vertical jitter drops while running tape swipes
+        const x = e.touches[0].pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5; // Controls the swiping sensitivity speed multiplier
+        track.scrollLeft = scrollLeft - walk;
+    });
+
 
     // Stat Counters Intersections Trigger Module
     const metricObserver = new IntersectionObserver((entries, observer) => {
