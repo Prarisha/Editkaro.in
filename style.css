@@ -1125,3 +1125,41 @@ body.dark-phase-active .collector-submit-btn.deactivated-state {
         font-size: 2.5rem !important;
     }
 }
+/* Optimized Mobile Slabs Architecture Override */
+@media (max-width: 768px) {
+    .archive-gateway-grid {
+        display: flex !important; /* Changes the vertical grid to a single horizontal line */
+        grid-template-columns: none !important;
+        gap: 0.8rem !important;
+        padding: 0.5rem 1rem !important;
+        
+        /* 🚀 UNBREAKABLE NATIVE ACCELERATED HORIZONTAL CAROUSEL SWIPING */
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-x !important;
+        scrollbar-width: none; /* Hides horizontal bars on Firefox */
+    }
+
+    .archive-gateway-grid::-webkit-scrollbar {
+        display: none !important; /* Hides horizontal scroll bar on Chrome, Safari, and Opera */
+    }
+
+    .gateway-card {
+        flex-shrink: 0 !important; /* MANDATORY: Stops the browser from squishing the slabs together */
+        width: auto !important; /* Lets the slab width adapt directly to the size of the text */
+        padding: 0 1.5rem !important; /* Gives the text a nice aesthetic padding on left and right */
+        height: 55px !important; /* Makes the rows compact and sleek to save screen space */
+        border-radius: 30px !important; /* Optional: Smooth rounded pill-tag shape for GenZ look */
+    }
+
+    .card-inner-glitch {
+        font-size: 1rem !important; /* Sharp, clean font tracking on narrow screens */
+        padding: 0 !important;
+    }
+    
+    .showcase-section {
+        padding-bottom: 2rem !important; /* Pulls the content up tighter to reduce vertical drag */
+    }
+}
