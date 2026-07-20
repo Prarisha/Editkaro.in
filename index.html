@@ -94,11 +94,21 @@
             <h2>REEL REVOLUTION</h2>
             <p>Our scroll timeline changes states just like your content retention curves.</p>
         </div>
-        <div class="horizontal-stream-track" id="streamTrack">
+
+        <!-- NEW: Mobile Navigation Controls -->
+        <div class="mobile-track-controls">
+            <button class="track-nav-btn prev-btn" id="prevSlideBtn">←</button>
+            <button class="track-nav-btn next-btn" id="nextSlideBtn">→</button>
+        </div>
+
+        <!-- NEW: Wrapper to hold the track and contain it on mobile viewports -->
+        <div class="stream-track-viewport">
+            <div class="horizontal-stream-track" id="streamTrack">
             <div class="stream-panel-card film-sprocket-frame"><img src="assets/advanced-editing-setup-stockcake.jpg" alt="Abstract"></div>
             <div class="stream-panel-card film-sprocket-frame"><img src="assets/images (3).jpg" alt="Workspace"></div>
             <div class="stream-panel-card film-sprocket-frame"><img src="assets/change-aspect-ratio-13.webp" alt="Gaming"></div>
             <div class="stream-panel-card film-sprocket-frame"><img src="assets/images (2).jpg" alt="Cinema"></div>
+            </div>
         </div>
     </section>
 
