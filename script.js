@@ -235,5 +235,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+    // 📱 HAMBURGER THREE-LINE DROP-DOWN MENU TRIGGER ENGINE
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const dropdownMenu = document.getElementById("dropdownMenuContainer");
+    const menuCloseLinks = document.querySelectorAll(".menu-close-link");
+
+    if (hamburgerBtn && dropdownMenu) {
+        // Toggle dropdown open/close when clicking the hamburger button
+        hamburgerBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevents instant closing bubble clicks
+            hamburgerBtn.classList.toggle("is-active");
+            dropdownMenu.classList.toggle("dropdown-open");
+        });
+
+        // Auto-collapse dropdown when clicking outside of it
+        document.addEventListener("click", (e) => {
+            if (!dropdownMenu.contains(e.target) && e.target !== hamburgerBtn) {
+                hamburgerBtn.classList.remove("is-active");
+                dropdownMenu.classList.remove("dropdown-open");
+            }
+        });
+
+        // Close dropdown instantly when a user selects a section link anchor
+        menuCloseLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                hamburgerBtn.classList.remove("is-active");
+                dropdownMenu.classList.remove("dropdown-open");
+            });
+        });
+    }
 
         
