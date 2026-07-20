@@ -533,3 +533,198 @@ body.dark-phase-active .collector-submit-btn.deactivated-state {
     color: rgba(255, 255, 255, 0.2) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
+/* Mobile Optimization & Responsive Container Architecture Override */
+@media (max-width: 768px) {
+    /* 1. Global Viewport Adjustments */
+    :root {
+        /* Force smaller, sharper font metrics on mobile scales */
+        font-size: 14px !important; 
+    }
+
+    body {
+        /* Prevent accidental horizontal page sway or breaking layouts */
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    /* 2. Global Section Padding & Width Caps */
+    section, .showcase-section, .dark-trigger-zone, .about-studio-section, .crew-section, .consultation-form-section {
+        padding: 5rem 5% !important; /* Reduces oversized empty whitespace gaps */
+        max-width: 100%;
+    }
+
+    /* 3. Navbar Layout Compacting */
+    .navbar {
+        padding: 1rem 5% !important;
+    }
+    .logo {
+        font-size: 1.4rem !important;
+    }
+
+    /* 4. Hero Section Restructuring */
+    .hero-arena {
+        padding-top: 80px !important;
+        min-height: auto !important;
+        height: auto !important;
+        padding-bottom: 4rem !important;
+    }
+    .hero-split-layout {
+        grid-template-columns: 1fr !important; /* Stack columns vertically instead of stretching horizontally */
+        gap: 2.5rem !important;
+    }
+    .giant-reveal-title {
+        font-size: 2.8rem !important; /* Tightens title tracking on narrow viewports */
+        line-height: 1.0 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    .hero-sub-statement {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.8rem !important;
+        max-width: 100% !important;
+    }
+
+    /* Compact Hero Graphics Box */
+    .hero-right-graphic-vault {
+        order: -1 !important; /* Places the cool 3D animation logo above text on phones */
+    }
+    .floating-logo-canvas {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    .orbiting-halo-ring {
+        width: 140px !important;
+        height: 140px !important;
+    }
+
+    /* 5. Email Collector Input Compacting */
+    .email-collector-container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .collector-inner-form {
+        flex-direction: column; /* Stacks button beneath the input on small screens */
+        background: transparent !important;
+        border: none !important;
+        gap: 0.6rem;
+        padding: 0 !important;
+    }
+    .collector-inner-form input {
+        border: 2px solid var(--text-dark) !important;
+        border-radius: 4px !important;
+        width: 100% !important;
+        padding: 1rem !important;
+    }
+    .collector-submit-btn {
+        padding: 1rem !important;
+        border-radius: 4px !important;
+        width: 100% !important;
+        font-size: 1rem !important;
+    }
+
+    /* 6. Curated Archive Grid Adjustments */
+    .archive-gateway-grid {
+        grid-template-columns: 1fr !important; /* Clear 3-column rows into clear single vertical slabs */
+        gap: 1.2rem !important;
+    }
+    .gateway-card {
+        height: 80px !important; /* Make card heights more compact for easy scrolling */
+    }
+    .card-inner-glitch {
+        font-size: 1.2rem !important;
+    }
+
+    /* Portfolio Render Stage Video Elements Setup */
+    .portfolio-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    .stage-control-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .current-stage-title {
+        font-size: 1.5rem !important;
+    }
+
+    /* 7. Reel Revolution Track Scaling */
+    .zone-header h2 {
+        font-size: 2.2rem !important;
+    }
+    .horizontal-stream-track {
+        padding: 0 2rem !important;
+        gap: 1.5rem !important;
+    }
+    .stream-panel-card {
+        width: 220px !important; /* Scale carousel cards to perfectly fit viewport margins */
+        height: 300px !important;
+    }
+
+    /* 8. Manifesto Page Scaling Adjustments */
+    .about-grid-layout {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+    .about-vision-block h2 {
+        font-size: 2.2rem !important;
+    }
+    .about-body-text {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
+    .metric-panel {
+        padding: 1.5rem !important;
+    }
+    .metric-num {
+        font-size: 2.8rem !important;
+    }
+
+    /* 9. The Crew Segment Rows Compacting */
+    .crew-header-block h2 {
+        font-size: 2.2rem !important;
+    }
+    .crew-panel-row {
+        padding: 1.5rem 0 !important;
+        flex-wrap: wrap; /* Prevent text rows from squishing horizontally */
+        gap: 0.5rem;
+    }
+    .crew-profile-info h3 {
+        font-size: 1.4rem !important;
+    }
+
+    /* 10. Forms Architecture Custom Radio Layout Adjustments */
+    .form-grid-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+    }
+    .form-pitch-side h2 {
+        font-size: 2.5rem !important;
+    }
+    .custom-radio-group {
+        grid-template-columns: 1fr !important; /* Stack budget tiles sequentially */
+        gap: 0.6rem !important;
+    }
+    .tile-label {
+        padding: 1rem !important;
+    }
+    .pill-selector-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Clean 2x2 grid for project timelines */
+        gap: 0.5rem;
+    }
+    .pill-choice span {
+        text-align: center;
+        padding: 0.8rem 0 !important;
+    }
+
+    /* Lightbox Modal Dimensions Adjustments */
+    .lightbox-frame {
+        width: 95% !important;
+    }
+    .lightbox-close-trigger {
+        top: 1rem !important;
+        right: 1.5rem !important;
+        font-size: 2.5rem !important;
+    }
+}
