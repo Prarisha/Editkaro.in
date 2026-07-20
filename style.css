@@ -169,7 +169,7 @@ body.dark-phase-active .nav-btn {
     100% { transform: rotate(180deg) scale(0.95) translate(-40px, 40px); } 
 }
 
-.hero-full-layout { 
+.hero-left-full-layout { 
     display: flex;
     flex-direction: column;
     align-items: center;
