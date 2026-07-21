@@ -220,10 +220,10 @@ body.dark-phase-active .nav-btn {
 }
 
 .giant-reveal-title { 
-    font-family: var(--font-impact); 
-    font-size: clamp(2.4rem, 6vw, 4.5rem); 
-    line-height: 0.9; 
-    letter-spacing: -2px; 
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem); 
+    line-height: 0.92; 
+    letter-spacing: -1px; 
     margin-bottom: 2rem; 
 }
 
