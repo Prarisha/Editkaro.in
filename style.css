@@ -146,7 +146,8 @@ body.dark-phase-active .nav-btn {
     position: relative; 
     padding: 0 8%; 
     background: #ffffff; 
-    overflow: hidden; 
+    overflow: hidden;
+    padding-top: 120px;
 }
 
 .hero-arena::before { 
