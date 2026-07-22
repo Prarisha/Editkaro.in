@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // PASTE YOUR COPIED GOOGLE APPS SCRIPT WEB APP URL HERE:
+    
     const webAppUrl = "https://script.google.com/macros/s/AKfycbzi5YMx-zWhV0LTObbFez5Xd-49sF-17uoUMUVTlRcno6sALtQhRzPQl8tCFtHDMam1/exec";
 
     const track = document.getElementById("streamTrack");
@@ -161,8 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeLightbox.addEventListener("click", () => { lightbox.style.display = "none"; lightboxVideo.pause(); lightboxVideo.src = ""; });
 
-    // Upgraded Feature 1 (Home Page Email Collector Form Submission Engine)
-        // Upgraded Feature 1 (Home Page Email Collector Form Submission Engine)
+    
     emailCollectorForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const emailInput = document.getElementById("collectorEmail");
@@ -195,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Feature 2 (Primary 6-Parameter Lead Qualification Form Submission Execution)
+    
     onboardingForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const submitButton = onboardingForm.querySelector(".submit-form-btn");
